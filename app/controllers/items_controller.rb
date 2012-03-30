@@ -7,10 +7,6 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def new
-    render :action => 'index'
-  end
-
   def create
     @item = Item.new(params[:item])
     if @item.save

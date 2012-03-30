@@ -1,25 +1,26 @@
-<h1>Listing items</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @items.each do |item| %>
-  <tr>
-    <td><%= item.name %></td>
-    <td><%= item.description %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Items</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_item_path(item), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', item_path(item), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New', new_item_path, :class => 'btn btn-primary' %>

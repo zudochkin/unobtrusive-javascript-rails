@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.description %></td>
+        <td>
+          <%= link_to 'Edit', edit_item_path(item), :class => 'btn btn-mini', :remote => true %>
+          <%= link_to 'Destroy', item_path(item), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger', :remote => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

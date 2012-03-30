@@ -1,0 +1,3 @@
+$("#item_errors").hide();
+$("#flash.notice").html("<%= escape_javascript(flash[:notice]) %>").show();
+$("#items_list").html("<%= escape_javascript( render 'items') %>");
